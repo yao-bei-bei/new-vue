@@ -1,4 +1,4 @@
-<style>
+<style scoped>
   .layout {
     border: 1px solid #d7dde4;
     background: #f5f7f9;
@@ -59,6 +59,9 @@
   }
   .ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title{
     padding: 0;
+  }
+  .ivu-menu-item{
+    height: 50px!important;
   }
   .active{
     color: #2d8cf0!important;
