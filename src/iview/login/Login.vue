@@ -12,6 +12,7 @@
         </Card>
       </div>
     </div>
+
 </template>
 <script>
   import LoginForm from '@/components/login/login'
@@ -19,7 +20,7 @@ export default {
   name: 'login',
   data(){
     return {
-
+      spinShow:false
     }
   },
   components: {
@@ -44,8 +45,8 @@ export default {
           roles: 'user'
         });
         sessionStorage.setItem('roles', 'user');
-        this.$Message.success('登录成功');
-        this.$router.push('/home');
+          this.$Message.success('登录成功');
+          this.$router.push('/home');
       }
       // this.handleLogin({ userName, password }).then(res => {
       //   this.getUserInfo().then(res => {

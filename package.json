@@ -2,7 +2,6 @@
   "name": "safety-certificate",
   "version": "1.0.0",
   "description": "1",
-  "author": "xubaodian <472784995@qq.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
