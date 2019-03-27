@@ -27,11 +27,10 @@ router.beforeEach((to, from, next) => {
     if (role === '') {
       next('/login');
     } else {
-
       if(to.matched.every(item => item.meta.indexOf(role) > -1)) {
         next();
       } else {
-        next('/tips');
+        next('/401');
       }
     }
   }

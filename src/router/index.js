@@ -7,6 +7,9 @@ import Guest from '@/iview/home/Guest'
 import Tips from '@/iview/404/Tips'
 import Box  from '@/iview/home/Box'
 import Boss from  '@/iview/home/Boss'
+import E401 from '@/iview/error-page/401'
+import E500 from '@/iview/error-page/500'
+import E404 from '@/iview/error-page/404'
 import $ from "jquery"
 Vue.use(Router);
 export default new Router({
@@ -27,7 +30,7 @@ export default new Router({
       path:'/tips',
       name:'tips',
       component: Tips,
-      meta: ['admin', 'user']
+
     },
     {
       path:'/home',
@@ -61,6 +64,24 @@ export default new Router({
           meta: ['admin','user']
         }
       ]
+    },
+    {
+      path: '/401',
+      name: 'error_401',
+      meta: ['admin','user'],
+      component: E401
+    },
+    {
+      path: '/500',
+      name: 'error_500',
+      meta: ['admin','user'],
+      component: E500
+    },
+    {
+      path: '*',
+      name: 'error_404',
+      meta: ['admin','user'],
+      component: E404
     }
-  ]
+]
 })
