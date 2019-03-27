@@ -4,7 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import api from './api/index' // 导入api接口
+import VueJsonp from  'vue-jsonp'
+// import api from './api/index' // 导入api接口
 import bus from "vue-bus"
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
@@ -13,7 +14,8 @@ Vue.use(iView, {
     size: 'large'
 });
 Vue.use(bus);
-Vue.prototype.$api = api;
+Vue.use(VueJsonp)
+// Vue.prototype.$api = api;
 //Vue.config.productionTip = false
 
 /* eslint-disable no-new */

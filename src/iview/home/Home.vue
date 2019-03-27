@@ -1,13 +1,13 @@
 <style scoped>
   .layout {
-    border: 1px solid #d7dde4;
     background: #f5f7f9;
     position: relative;
-    border-radius: 4px;
     overflow: hidden;
     min-height: 100vh;
   }
-
+.ivu-layout{
+  width: 100%;
+}
   .layout-header-bar {
     background: #fff;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
@@ -60,44 +60,65 @@
   .ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title{
     padding: 0;
   }
+  .ivu-menu-dark{
+    width: auto!important;
+  }
   .ivu-menu-item{
     height: 50px!important;
   }
   .active{
+    width: 100%!important;
     color: #2d8cf0!important;
     background: #363e4f!important;
+  }
+  .box{
+    width: 100%;
+    height: 84px;
+    text-align: center;
+    display: block;
+    margin: auto;
+  }
+  .head{
+    margin-top: 6px;
+    width: 50px;
+    height: auto;
+    margin-right: 50px;
+    float: right;
+    border-radius: 50%;
   }
 </style>
 <template>
   <div class="layout">
     <Layout>
-      <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" style="min-height: 100vh">
-        <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses">
-          <MenuItem style="width: 100%;height:100%;text-align: center" v-for="(item, index) in routeList" :key="index" :name="index" :class="{active:index==num}">
-            <div style="padding: 14px 24px" @click="home(item.path,index)" >
-              <Icon :type="item.type[index]" ></Icon>
-              <span >{{item.name}}</span>
-            </div>
-          </MenuItem>
-        </Menu>
-      </Sider>
-      <Layout>
-        <Header :style="{padding: 0}" class="layout-header-bar">
-          <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px'}" type="md-menu"
-                size="24"></Icon>
+        <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}" ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
+          <Header :style="{padding: 0}" class="layout-header-bar" >
+            <img class="box" src="http://img1.imgtn.bdimg.com/it/u=508891803,1249450012&fm=26&gp=0.jpg">
+          </Header>
+          <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses">
+            <MenuItem style="width: 100%;height:100%;text-align: center" v-for="(item, index) in routeList" :key="index" :name="index" :class="{active:index==num}">
+              <div style="padding: 14px 24px;" @click="home(item.path,index)" >
+                <Icon :type="item.type[index]" ></Icon>
+                <span >{{item.name}}</span>
+              </div>
+            </MenuItem>
+          </Menu>
+        </Sider>
+
+      <Layout :style="{marginLeft: '200px'}">
+        <Header  :style="{padding: 0}" class="layout-header-bar" style="position: fixed;width: 87%;z-index: 1">
+          <img class="head" :src="src">
         </Header>
         <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">
           <router-view></router-view>
         </Content>
-
-      </Layout>
+    </Layout>
     </Layout>
   </div>
 </template>
 <script>
   import FirstChild from './firstChild'
   import SecondChild from './secondChild'
-
+  import head from '@/assets/images/1.jpg'
   export default {
     data() {
       return {
@@ -110,6 +131,7 @@
           'ios-paper'
         ],
         num:'',
+        src:head
       }
     },
     components: {
@@ -143,6 +165,7 @@
     methods: {
       collapsedSider() {
         this.$refs.side1.toggleCollapse();
+        console.log(this.$refs.side1)
       },
       getRouter(arr) {
         let role = sessionStorage.getItem('roles') || this.$store.getters.getRoles;

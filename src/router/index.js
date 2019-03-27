@@ -4,7 +4,6 @@ import Login from '@/iview/login/Login'
 import Home from '@/iview/home/Home'
 import Admin from '@/iview/home/Admin'
 import Guest from '@/iview/home/Guest'
-import Tips from '@/iview/404/Tips'
 import Box  from '@/iview/home/Box'
 import Boss from  '@/iview/home/Boss'
 import E401 from '@/iview/error-page/401'
@@ -27,12 +26,6 @@ export default new Router({
       meta: ['admin', 'user']
     },
     {
-      path:'/tips',
-      name:'tips',
-      component: Tips,
-
-    },
-    {
       path:'/home',
       name:'home',
       component: Home,
@@ -41,7 +34,7 @@ export default new Router({
       children: [
         {
           path:'admin',
-          name:'用户权限管理',
+          name:'娱乐新闻',
           component: Admin,
           meta: ['admin','user'],
         },

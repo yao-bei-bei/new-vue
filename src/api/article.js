@@ -7,6 +7,12 @@ import axios from 'axios'; // 引入axios // 导入http中创建的axios实例
 import qs from 'qs'; // 根据需求是否导入qs模块
 
 const article = {
+  //new 接口
+  articlenew (params){
+    console.log(params);
+    return axios.get(`${base.bd}/journalismApi`)
+  },
+  //
   // 新闻列表
   articleList () {
     return axios.get(`${base.sq}/mock`);
